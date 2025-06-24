@@ -1,0 +1,40 @@
+<div id="container">
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(product of products; track product.id){
+      <tr>
+        <td>
+          {{ product.name }}
+        </td>
+        <td>
+          {{ product.quantity }}
+        </td>
+        <td>
+          {{ product.price }}
+        </td>
+      </tr>
+      }
+    </tbody>
+    <tfoot>
+      <p>
+        Total:
+        {{ total | number: '1.2-2' }}
+      </p>
+    </tfoot>
+  </table>
+
+  <form id="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <span>Add a new product</span>
+    <input formControlName="name" type="string" placeholder="Name" />
+    <input formControlName="quantity" type="number" placeholder="Quantity" />
+    <input formControlName="price" type="number" placeholder="Price" />
+    <button type="submit" id="submit" (click)="onSubmit()">Submit</button>
+  </form>
+</div>
